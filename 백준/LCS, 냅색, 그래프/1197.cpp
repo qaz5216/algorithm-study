@@ -50,10 +50,10 @@ int main()
         if(find(edge[i].second.first)!=find(edge[i].second.second))
         {
             
-            cout<<edge[i].second.first<<" & "<<edge[i].second.second <<"parent"<<find(edge[i].second.first)<<" & "<<find(edge[i].second.second)<<endl;
+            //cout<<edge[i].second.first<<" & "<<edge[i].second.second <<"parent"<<find(edge[i].second.first)<<" & "<<find(edge[i].second.second)<<endl;
             myunion(edge[i].second.first,edge[i].second.second);
             ans+=edge[i].first;
-            cout<<"ans="<<ans<<endl;
+            //cout<<"ans="<<ans<<endl;
         }
     }
     cout<< ans;
