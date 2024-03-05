@@ -1,0 +1,41 @@
+# Created by httpswww.toptal.comdevelopersgitignoreapic++
+# Edit at httpswww.toptal.comdevelopersgitignoretemplates=c++
+
+### C++ ###
+# Prerequisites
+.d
+
+# Compiled Object files
+.slo
+.lo
+.o
+.obj
+
+# Precompiled Headers
+.gch
+.pch
+
+# Compiled Dynamic libraries
+.so
+.dylib
+.dll
+
+# Fortran module files
+.mod
+.smod
+
+# Compiled Static libraries
+.lai
+.la
+.a
+.lib
+
+# Executables
+.exe
+.out
+.app
+
+# End of httpswww.toptal.comdevelopersgitignoreapic++
+
+# 특정 경로안의 특정 파일 제외
+백준/*.exe
