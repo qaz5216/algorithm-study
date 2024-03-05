@@ -24,7 +24,6 @@ void myunion(int a, int b)
 int main()
 {
     int N;
-    vector<pair<int,int>> edge;
 
     ios_base::sync_with_stdio(false);
     cin>>N;
@@ -36,17 +35,13 @@ int main()
     {
         int a,b;
         cin >>a >> b;
-        edge.push_back({a,b});
-    }
-    for(pair<int,int> e:edge)
-    {
-        myunion(e.first,e.second);
+        myunion(a,b);
     }
     for(int i=1;i<N;i++)
     {
         if(find(i)!=find(i+1))
         {
-            cout<< i << i+1;
+            cout<< i <<" "<< i+1;
             return 0;
         }
     }
