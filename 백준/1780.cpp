@@ -17,7 +17,6 @@ void cut(int x,int y,int num)
                 {
                     for(int l=0;l<3;l++)
                     {
-                        cout<<"cut("<<x+(num/3)*k<<","<<y+(num/3)*l<<","<<num/3<<")\n";
                         cut(x+(num/3)*k,y+(num/3)*l,num/3);
                     }
                 }
