@@ -9,6 +9,9 @@ int dp[26][200001];
 vector<int> ans;
 int main()
 {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
     cin>>S;
     cin>>q;
     for(int i=0;i<S.size();i++)
