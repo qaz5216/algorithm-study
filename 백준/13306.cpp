@@ -1,69 +1,84 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
-const int MN = 200001;
 
-int par[MN];
-int p[MN];
-struct edge {
-    int x, b, c, d;
-};
-vector<edge> query;
-vector<bool> rst;
-
-void init(int n) {
-    for(int i = 1; i <= n; i++)
-        p[i] = i;
+int N,Q;
+int edge[200001];
+int P[200001];
+vector<pair<int,pair<int,int>>> query;
+vector<string> ans;
+int find(int x)
+{
+    if(x==P[x])
+    {
+        return x;
+    }
+    return P[x]=find(P[x]);
 }
 
-int find(int x) {
-    if(x == p[x]) return x;
-    return p[x] = find(p[x]);
+void myunion(int a,int b)
+{
+    a=find(a);
+    b=find(b);
+    if(a==b)
+        return;
+    if(a>b)swap(a,b);
+    P[b]=P[a];
+    return;
 }
 
-void unite(int x, int y) {
-    x = find(x), y = find(y);
-    p[y]= x;
-}
-
-int main() {
+int main()
+{
     ios::sync_with_stdio(false); cin.tie(NULL);
-    int N, Q; cin >> N >> Q;
-    init(N);
-    for(int i = 0; i < N - 1; i++)
-        cin >> par[i + 2];
-        
-    Q += (N - 1);
-    while(Q--) {
-        int x, b, c, d; cin >> x;
-        if(x == 0) {
-            cin >> b;
-            edge e = {x, b, 0, 0};
-            query.push_back(e);
-        }
-        else {
-            cin >> c >> d;
-            edge e = {x, 0, c, d};
-            query.push_back(e);
-        }
+    cin >> N>>Q;
+    for(int i=2;i<=N;i++)
+    {
+        cin>>edge[i];
     }
-
-    reverse(query.begin(), query.end());
-
-    for(edge q : query) {
-        if(q.x == 0)
-            unite(q.b, par[q.b]);
-        else {
-            if(find(q.c) != find(q.d))
-                rst.push_back(0);
-            else
-                rst.push_back(1);
+    for(int i=0;i<Q+N-1;i++)
+    {
+        int a,b,c;
+        cin>> a;
+        if(a!=0)
+        {
+            cin>>b>>c;
+            query.push_back({a,{b,c}});
         }
-    }
-    for(auto it = rst.rbegin(); it != rst.rend(); it++) {
-        if(*it)
-            cout << "YES\n";
         else
-            cout << "NO\n";
+        {
+            cin>>b;
+            query.push_back({a,{b,0}});
+        }   
+    }
+    reverse(query.begin(),query.end());
+    for(int i=1;i<=N;i++)
+    {
+        P[i]=i;
+    }
+    
+    for(pair<int,pair<int,int>> q:query)
+    {
+        if(q.first==0)
+        {
+            myunion(q.second.first,edge[q.second.first]);
+        }
+        else
+        {   
+            if(find(q.second.first)==find(q.second.second))
+            {
+                ans.push_back("YES");
+            }
+            else
+            {
+                ans.push_back("NO");
+            }
+        }
+    }
+    reverse(ans.begin(),ans.end());
+    for(string answer:ans)
+    {
+        cout<<answer<<"\n";
     }
 }
