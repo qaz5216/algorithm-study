@@ -1,4 +1,6 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <cstring>
 
 using namespace std;
 const int MN = 1001;
@@ -14,12 +16,11 @@ void dfs(int n) {
         if(visited[nxt]) continue;
         dfs(nxt);
     }
-
     st.push_back(n);
 }
 
 int main() {
-    ios::sync_with_stdio(false); cin.tie(NULL);
+    ios::sync_with_stdio(false); cin.tie(NULL);cout.tie(NULL);
     int T; cin >> T;
     while(T--) {
         int N, K; cin >> N >> K;
@@ -28,22 +29,18 @@ int main() {
 
         while(K--) {
             int a, b; cin >> a >> b;
-            g[a].push_back(b);
+            g[b].push_back(a);
         }
 
         for(int i = 1; i <= N; i++)
             if(!visited[i])
                 dfs(i);
-
-        reverse(st.begin(), st.end());
-
         int W; cin >> W;
         for(int e : st) {
             fin[e] += arr[e];
             for(int nxt : g[e])
-                fin[nxt] = max(fin[nxt], fin[e]);
+                fin[e] = max(fin[nxt]+arr[e], fin[e]);
         }
-
         cout << fin[W] << '\n';
         memset(arr, 0, sizeof(arr));
         memset(fin, 0, sizeof(fin));
