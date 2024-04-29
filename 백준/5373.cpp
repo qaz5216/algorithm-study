@@ -16,14 +16,6 @@ void initcube()
 
 char color(int x)
 {
-    // char a='0'+x;
-    // if(a=='0') a='w'; //위
-    // else if(a=='1') a='y'; //아래
-    // else if(a=='2') a='r'; //앞
-    // else if(a=='3') a='o'; //뒤
-    // else if(a=='4') a='g'; //왼
-    // else if(a=='5') a='b'; //오
-    // return a;
     char a='0'+x;
     if(a=='0') a='w'; //위
     else if(a=='1') a='y'; //아래

@@ -7,6 +7,7 @@ int N,M;
 vector<int> g[32001];
 vector<int> st;
 int in_degree[32001];
+bool visit[32001];
 
 int main()
 {  
