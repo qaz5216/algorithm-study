@@ -3,24 +3,24 @@
 using namespace std;
 
 int N;
-int arr[100001];
 int dp[100001];
 
 int main()
 {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     cin>> N;
     int result;
     for(int i=0;i<N;i++)
     {
-        cin>>arr[i];
+        cin>>dp[i];
         if(i==0)
         {
-            dp[0]=arr[0];
             result=dp[0];
         }
         else
         {
-            dp[i]=max(dp[i-1]+arr[i],arr[i]);
+            dp[i]=max(dp[i-1]+dp[i],dp[i]);
             result=max(dp[i],result);
         }
     }
