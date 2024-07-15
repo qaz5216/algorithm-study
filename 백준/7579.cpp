@@ -25,7 +25,6 @@ int main()
     {
         for(int j=0;j<=sum;j++)
         {
-            cout<<i<<","<<j<<"\n";
             if(j-rapp[i]>=0)
             {
                 dp[i][j]=max(dp[i][j],dp[i-1][j-rapp[i]]+app[i]);
