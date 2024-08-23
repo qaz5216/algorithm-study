@@ -40,7 +40,7 @@ int main()
         {
             pair<int,pair<int,int>> cur=pq.top(); pq.pop();
             if(visit[cur.second.first])
-            {
+            {   //지나온거리가 같고 특정도로를 지났으면서 이점으로 온 다른경우에 특정도로를 안지났을때
                 if(dp[cur.second.first]==cur.first&&cur.second.second&&!check[cur.second.first]){}
                 else continue;
             }
