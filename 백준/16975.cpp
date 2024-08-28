@@ -7,8 +7,6 @@ using namespace std;
 ll arr[100001];
 ll seg[400004];
 
-
-
 void initseg(int node,int s,int e)
 {
     if(s==e) {seg[node]=arr[s]; return;};
@@ -30,7 +28,7 @@ void update(int node,int s,int e,int l,int r,int val)
     return;
 }
 
-ll query(int node,int s,int e,int pos,int sum)
+ll query(int node,int s,int e,int pos,ll sum)
 {
     if(e<pos||pos<s) return 0;
     sum+=seg[node];

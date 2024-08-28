@@ -1,76 +1,71 @@
 #include <iostream>
-#include <vector>
-#include <string>
-#include <cstring>
-#include <algorithm>
+#include <queue>
 
 using namespace std;
-int n,k;
-int arr[100];
-int con[100];
-int result=100;
-int fillcon(){
-    int idx;
-    for(int i=0;i<k;i++){
-        int check=1;
-        for(int j=0;j<n;j++){
-            if(con[j]==0||con[j]==arr[i]){
-                con[j]=arr[i];
-                check=0;
-                break;
-            }
-        }
-        if(check==1){
-            idx=i;
-            break;
-        }
-    }
-    return idx;
-}
 
-void plug(int a,int b){
-    if(a==k){
-        result=min(result,b);
-    }
-    else if(result<=b){
-        //이거안해주면 시간초과나옴
-    }
-    else{
-    int check=0;
-    for(int i=0;i<n;i++){
-        if(con[i]==arr[a]){
-                con[i]=arr[a];
-                check=1;
-                break;
-            }
-    }
-    if(check==1){
-        plug(a+1,b);
-    }
-    else{
-        for(int i=0;i<n;i++){
-            int tmp=con[i];
-            con[i]=arr[a];
-            plug(a+1,b+1);
-            con[i]=tmp;
-        }
-    }
-    }
+int con[101]; //콘센트에 꽂혀있는 기계 0: 안꽂혀있음
+int ntime[101]; //콘센트에 꽂혀있는 기계의 다음 사용시간
+int dp[101]; //기계의 콘센트 위치 0 : 안꽂혀있음
+int arr[101];
+int sum=0;
+int n,k;
+priority_queue<int,vector<int>,greater<int>> pq[101];
+
+void connect(int x)
+{
 }
 
 int main()
 {
-    fill_n(con,100,0);
-    cin >> n >> k;
-    for(int i=0;i<k;i++){
-        cin >> arr[i];
+    cin>>n>>k;
+    for(int i=1;i<=k;i++)
+    {
+        cin>>arr[i];
+        pq[arr[i]].push(i);
     }
-    int idx=fillcon();
-    if(idx==k){
-        cout << 0;
-        return 0;
+    for(int i=1;i<=n;i++)
+    {
+        ntime[i]=102; // 모든콘센트 비어있음
     }
-    plug(idx,0);
-    cout<<result;
+    for(int i=1;i<=k;i++)
+    {
+        if(dp[arr[i]]!=0) //이미 꽂혀있다면
+        {
+            if(!pq[arr[i]].empty()){ //기계가 다음에도 사용되면
+            ntime[dp[arr[i]]]=pq[arr[i]].top();pq[arr[i]].pop();
+            }
+            else{
+            ntime[dp[arr[i]]]=101;
+            }
+        }
+        else    //안꽂혀있으면
+        {   
+            int idx=1;
+            for(int i=2;i<=n;i++)
+            {
+                if(ntime[idx]<ntime[i])
+                {
+                    idx=i;
+                }
+            }
+            // 콘센트 빼기
+            dp[con[idx]]=0; //빼기
+            con[idx]=arr[i]; //꼽기
+            dp[arr[i]]=idx; //꼽기
+            if(pq[arr[i]].top()==i) {
+                if(!pq[arr[i]].empty()){
+                    pq[arr[i]].pop();
+                }
+            }
+            if(!pq[arr[i]].empty()){ //기계가 다음에도 사용되면
+                ntime[dp[arr[i]]]=pq[arr[i]].top();pq[arr[i]].pop();
+            }
+            else{
+                ntime[dp[arr[i]]]=101;
+            }
+            sum+=1;
+        }
+    }
+    cout<<max(0,sum-n);
     return 0;
 }
