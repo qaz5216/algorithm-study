@@ -66,6 +66,6 @@ int main()
             sum+=1;
         }
     }
-    cout<<max(0,sum-n);
+    cout<<max(0,sum-n);//멀티탭이 가전제품보다 많은경우 0
     return 0;
 }

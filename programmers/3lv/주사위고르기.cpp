@@ -1,120 +1,119 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 #include <algorithm>
+
 using namespace std;
 
-int N;
 vector<vector<int>> arr;
-int A[5],B[5];
-int ans[5];
-int maxwinnum=0;
-vector<int> Asum,Bsum;
+vector<int> ans;
+int n;
+vector<int> a;
+vector<int> b;
+vector<int> asum;
+vector<int> bsum;
+int mx=0;
 
-
-void initsum(int idx,int sum,bool op)
+void Asum(int idx,int x)
 {
-    if(idx==N/2)
+    if(idx==n/2)
     {
-        if(op)
-        Asum.push_back(sum);
-        else
-        Bsum.push_back(sum);
+        asum.push_back(x);
         return;
     }
     for(int i=0;i<6;i++)
     {
-        if(op)
-        initsum(idx+1,sum+arr[A[idx]][i],op);
-        else
-        initsum(idx+1,sum+arr[B[idx]][i],op);
+        Asum(idx+1,x+arr[a[idx]][i]);
+    }
+}
+void Bsum(int idx,int x)
+{
+    if(idx==n/2)
+    {
+        bsum.push_back(x);
+        return;
+    }
+    for(int i=0;i<6;i++)
+    {
+        Bsum(idx+1,x+arr[b[idx]][i]);
     }
 }
 
 void calc()
 {
-    Asum.clear();
-    Bsum.clear();
-    initsum(0,0,true);
-    initsum(0,0,false);
-    sort(Asum.begin(),Asum.end());
-    sort(Bsum.begin(),Bsum.end());
-    int aidx=0;
-    int bidx=0;
-    int winnum=0;
-    while(aidx<Asum.size()&&bidx<Bsum.size())
+    int aidx,bidx;
+    aidx=0;
+    b.clear();
+    for(int i=0;i<n;i++)
     {
-        if(Asum[aidx]>Bsum[bidx])
+        if(a[aidx]==i)
         {
-            bidx+=1;
+            aidx++;
         }
         else
         {
-            winnum+=bidx;
-            aidx+=1;
+            b.push_back(i);
         }
     }
-    if (bidx==Bsum.size())
+    asum.clear();
+    bsum.clear();
+    Asum(0,0);
+    Bsum(0,0);
+    aidx=0;
+    bidx=0;
+    sort(asum.begin(),asum.end());
+    sort(bsum.begin(),bsum.end());
+    int cnt=0;
+    while(aidx<asum.size()&&bidx<bsum.size())
     {
-        winnum+=bidx*(Asum.size()-aidx);
-    }
-    if(winnum>maxwinnum)
-    {
-        maxwinnum=winnum;
-        for(int i=0;i<N/2;i++)
+        
+        if(asum[aidx]<=bsum[bidx])
         {
-            ans[i]=A[i]+1;
+            cnt+=bidx;
+            aidx++;
         }
+        else
+        {
+            bidx++;
+        }
+    }
+    if(aidx!=asum.size())
+    {
+        cnt+=(asum.size()-aidx)*(bsum.size());
+    }
+    if(cnt>mx)
+    {
+        mx=cnt;
+        ans=a;
     }
 }
 
-void comb(int idx)
+void comb(int idx,int num)
 {
-    if(idx==N/2)
+    if(num==n/2)
     {
-        int aidx=0;
-        int bidx=0;
-        for(int i=0;i<N;i++)
-        {
-            if(A[aidx]==i&&aidx<N/2){
-                aidx++;
-            }
-            else
-            {
-                B[bidx]=i;
-                bidx++;
-            }
-        }
         calc();
+        return;
     }
-    if(idx==0)
+    if(idx==n)
     {
-        for(int i=0;i<N;i++)
-        {
-            A[idx]=i;
-            comb(idx+1);
-        }
+        return;
     }
-    else
-    {
-        for(int i=0;i<N;i++)
-        {
-            if(A[idx-1]<i){
-            A[idx]=i;
-            comb(idx+1);
-            }
-        }
-    }
+    a.push_back(idx);
+    comb(idx+1,num+1);
+    a.pop_back();
+    comb(idx+1,num);
 }
 
 vector<int> solution(vector<vector<int>> dice) {
-    vector<int> answer;
     arr=dice;
-    N=dice.size();
-    comb(0);
-    for(int i=0;i<N/2;i++)
+    n=dice.size();
+    vector<int> answer;
+    comb(0,0);
+    for(int x:ans)
     {
-        answer.push_back(ans[i]);
+        answer.push_back(x+1);
     }
     return answer;
 }
