@@ -37,8 +37,7 @@ struct Trie
         int curr = s[idx]-'0';
         if(next[curr])
         {
-            if(next[curr]->find(s,idx+1)) return true;
-            else return false;
+            return next[curr]->find(s,idx+1);
         }
         else
         {
@@ -70,7 +69,7 @@ int main()
             if(!root->find(s,0)) {check=false;}
             root->insert(s,0);
         }
-        if(check) cout<<"Yes"<<"\n";
+        if(check) cout<<"YES"<<"\n";
         else cout<<"NO"<<"\n";
     }
     return 0;
