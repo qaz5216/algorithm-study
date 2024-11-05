@@ -2,11 +2,9 @@
 #include <queue>
 using namespace std;
 int n,m,h,w;
-bool flag=false;
 bool check[1001][1001];
 bool board[1001][1001];
 int gx,gy;
-int mn=10000001;
 int dx[4]={1,-1,0,0};
 int dy[4]={0,0,1,-1};
 
@@ -74,7 +72,6 @@ int main()
     while(!q.empty())
     {
         pair<int,pair<int,int>> cur=q.front();q.pop();
-        if(cur.first>mn) continue;
         int curx=cur.second.first;
         int cury=cur.second.second;
         if(curx==gx&&cury==gy)

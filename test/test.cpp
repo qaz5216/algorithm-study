@@ -1,29 +1,38 @@
 #include <iostream>
-#include <set>
+#include <vector>
 using namespace std;
 
-class Animal {
+struct A{
+    private: 
     public:
-    Animal(){
-        cout<<"Animal()"<<"\n";
+    const int a=1;
+    A() {
+        cout<<"A()"<<a<<"\n";
     }
-    virtual ~Animal(){
-        cout<<"~Animal()"<<"\n";
+    ~A() {
+        cout<<"~A()"<<a<<"\n";
     }
-};
-
-class Dog : public Animal {
-	public:
-    Dog(){
-        cout<<"Dnimal()"<<"\n";
-    }
-    virtual ~Dog(){
-        cout<<"~Dnimal()"<<"\n";
+    virtual const int* show()
+    {
+        cout<<"A!"<<"\n";
+        cout<<&a<<"\n";
+        const int* b=&a;
+        return b;
     }
 };
-
 int main()
 {
-    Dog d;
+    vector<int> v;
+    A* a=new A();
+    const int* t=a->show();
+    cout<<t<<"\n";
+    int * my=const_cast<int *>(t);
+    cout<<my<<"\n";
+    cout<<*t<<"\n";
+    cout<<a->a<<"\n";
+    *my+=1;
+    cout<<a->a<<"\n";
+    delete(a);
+
     return 0;
 }
