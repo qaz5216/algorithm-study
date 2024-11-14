@@ -23,6 +23,7 @@ struct A{
 int main()
 {
     vector<int> v;
+    v.reserve(1000000);
     A* a=new A();
     const int* t=a->show();
     cout<<t<<"\n";
