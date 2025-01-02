@@ -1,11 +1,8 @@
 #include <iostream>
 #include <string>
-#include <vector>
-#include <algorithm>
 using namespace std;
 
 string ss;
-vector<string> ans;
 
 void calc(int n)
 {
