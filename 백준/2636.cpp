@@ -56,7 +56,6 @@ int main()
         dfs(0,0);
         if(remain-tmp<=0) break;
         remain-=tmp;
-        if(time>6) break;
     }
     cout<<time<<"\n";
     cout<<remain;
