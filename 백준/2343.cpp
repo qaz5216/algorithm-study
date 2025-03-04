@@ -9,25 +9,21 @@ int arr[100001];
 int main()
 {
     cin>>n>>m;
+    int mx=0;
     for(int i=0;i<n;i++)
     {
         cin>>arr[i];
+        mx=max(mx,arr[i]);
     }
-    int l=1;
+    int l=mx;
     int r=1e9;
     while(l<=r)
     {
         int mid=(l+r)/2;
         int b=1;
         int sum=0;
-        bool flag=false;
         for(int i=0;i<n;i++)
         {
-            if(mid<arr[i])
-            {
-                flag=true;
-                break;
-            }
             sum+=arr[i];
             if(sum>mid)
             {
@@ -35,12 +31,6 @@ int main()
                 sum=arr[i];
             }
         }
-        if(flag)
-        {
-            l=mid+1;
-            continue;
-        }
-        cout<<mid<<' '<<b<<' '<<l<<','<<r<<"\n";
         if(b<=m)
         {
             ans=min(ans,mid);
