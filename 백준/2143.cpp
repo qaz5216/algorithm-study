@@ -13,7 +13,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
-    int ans=0;
+    long long ans=0;
     cin>>t>>n;
     for(int i=0;i<n;i++)
     {
@@ -45,8 +45,34 @@ int main()
     for(int i=0;i<asum.size();i++)
     {
         int check=t-asum[i];
-        int lo=lower_bound(bsum.begin(),bsum.end(),check)-bsum.begin();
-        int hi=upper_bound(bsum.begin(),bsum.end(),check)-bsum.begin();
+        int lo=0;
+        int hi=0;
+        int l=0;int r=bsum.size();
+        while(l<r)
+        {
+            int mid=(l+r)/2;
+            if(bsum[mid]<check)
+            {
+                l=mid+1;
+            }
+            else{
+                r=mid;
+            }
+        }
+        lo=r;
+        l=0;r=bsum.size();
+        while(l<r)
+        {
+            int mid=(l+r)/2;
+            if(bsum[mid]<=check)
+            {
+                l=mid+1;
+            }
+            else{
+                r=mid;
+            }
+        }
+        hi=r;
         ans+=hi-lo;
     }
     cout<<ans<<'\n';
