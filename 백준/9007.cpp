@@ -11,14 +11,13 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
     vector<int> sum;
-    sum.resize(0);
     int t;
     cin>>t;
     while(t--)
     {
         int k,n;
-        int ans;
-        int diff=1e9;
+        int ans=1e9;
+        sum.resize(0);
         cin>>k>>n;
         for(int i=0;i<4;i++)
         {
@@ -50,32 +49,28 @@ int main()
                         r=mid;
                     }
                 }
-                if(r==sum.size())
+                if(r==0)
                 {
-                    r--;
-                    if(abs(sum[r]+tmp-k)<diff)
-                    {
-                        ans=sum[r]+tmp;
-                        diff=abs(k-ans);
-                    }
+                    tmp+=sum[r];
                 }
                 else
                 {
-                    if(abs(sum[r]+tmp-k)<diff)
+                    if(abs(k-(tmp+sum[r-1]))<=abs(k-(tmp+sum[r])))
                     {
-                        ans=sum[r]+tmp;
-                        diff=abs(k-ans);
+                        tmp+=sum[r-1];
                     }
-
-                    if(r>=1)
+                    else
                     {
-                        r--;
-                        if(abs(sum[r]+tmp-k)<diff)
-                        {
-                            ans=sum[r]+tmp;
-                            diff=abs(k-ans);
-                        }
+                        tmp+=sum[r];
                     }
+                }
+                if(abs(k-tmp)==abs(k-ans))
+                {
+                    ans=min(tmp,ans);
+                }
+                else if(abs(k-tmp)<abs(k-ans))
+                {
+                    ans=tmp;
                 }
             }
         }
