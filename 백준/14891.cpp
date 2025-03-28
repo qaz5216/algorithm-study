@@ -7,6 +7,7 @@ int tmp[4];
 int idx[4];
 int dx[2]={1,-1};
 bool visit[4];
+ 
 
 int pow(int x,int r)
 {
