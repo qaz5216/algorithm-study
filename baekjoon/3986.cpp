@@ -26,6 +26,7 @@ int main()
         for(int idx=0;idx<len;idx++)    //글자하나하나검사
         {
             int cur=m[str[i][idx]]; //전처리(글자하나)
+            /*
             if(s.empty()){  //비어있으면 그냥 넣어
                 s.push(cur);
             }
@@ -38,6 +39,14 @@ int main()
                 {
                     s.push(cur);    //넣어어
                 }
+            }
+            */
+           if (!s.empty() &&
+                s.top() == cur) {
+                s.pop();
+            }
+            else {
+                s.push(cur);
             }
             //cout<<s.size()<<" ";
         }

@@ -14,6 +14,9 @@ int main()
     }
     while(!q.empty())
     {
+        int a = 0, b = 10;
+        int w;
+        w=q.front(), q.pop();
         cout<<q.front()<<' ';//제일위에꺼 출력
         q.pop();//제일위에꺼 뺴기
         if(!q.empty())

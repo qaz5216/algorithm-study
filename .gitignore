@@ -38,5 +38,6 @@
 # End of httpswww.toptal.comdevelopersgitignoreapic++
 
 # 특정 경로안의 특정 파일 제외
-백준/*.exe
+baekjoon/*.exe
+jungol/*.exe
 test/
