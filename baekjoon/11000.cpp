@@ -21,14 +21,14 @@ int main(){
     for(int i=0;i<n;i++){
         while(!pq.empty()){
             int t=pq.top();
-            if(t<=arr[i].first)
+            if(t<=arr[i].first)//끝나는시간이 지금강의시작시간보다 작으면
                 pq.pop();
             else{
                 break;
             }
         }
-        pq.push(arr[i].second);
-        mx=max(mx,(int)pq.size());
+        pq.push(arr[i].second);//큐에 끝나는시간 넣기
+        mx=max(mx,(int)pq.size());//pq.size()=강의실 개수
     }
     cout<<mx;
     return 0;

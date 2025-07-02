@@ -56,18 +56,18 @@ int main(){
     cin>>n;
     for(int i=0;i<n;i++){
         cin>>arr[i].first>>arr[i].second;
-        mxtime=max(mxtime,arr[i].second);
+        mxtime=max(mxtime,arr[i].second); //제일 늦은시간 갱신
         int idx=arr[i].second;
         int cost=arr[i].first;
         while(idx>0){
-            if(schedule[idx]==0){
-                schedule[idx]=cost;
+            if(schedule[idx]==0){//idx시간에 아무강의도 없으면
+                schedule[idx]=cost; //강의넣기
                 break;
             }
-            else if(schedule[idx]<cost){
-                int tmp=schedule[idx];
-                schedule[idx]=cost;
-                cost=tmp;
+            else if(schedule[idx]<cost){ //idx에 있던강의보다 돈더주면
+                int tmp=schedule[idx];//idx에 있던 강의 빼기
+                schedule[idx]=cost;//idx에 강의 넣기
+                cost=tmp;//원래있던강의로 다시 탐색
             }
             idx-=1;
         }

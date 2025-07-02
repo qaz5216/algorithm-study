@@ -15,7 +15,7 @@ int main()
         string s;
         cin>>s;
         reverse(s.begin(),s.end());
-        arr[i]=stoull(s);
+        arr[i]=stoull(s); //sting to unsinged long long
     }
     sort(arr,arr+n);
     for(int i=0;i<n;i++){

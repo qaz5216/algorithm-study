@@ -18,7 +18,7 @@ bool comp(string a,string b){
 }
 
 bool lencomp(string a,string b){
-    if(a.length()==b.length()){
+    if(a.length()==b.length()){//길이가 같으면
         return comp(a,b);
     }
     return a.length()<b.length();
@@ -30,11 +30,11 @@ int main(){
     for(int i=0;i<n;i++){
         string s;
         cin>>s;
-        if(m[s]){
+        if(m[s]){ //중복체크
             dup++;
         }
         else{
-            v[i-dup]=s;
+            v[i-dup]=s;//i-중복된거나온만큼 빼고
             m[s]=true;
         }
     }

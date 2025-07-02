@@ -11,7 +11,7 @@ int main()
     cin>>n;
     int size=0;
     int tmp=n;
-    while(tmp>10){
+    while(tmp>10){ //자리수하나씩 짜르기
         arr[size++]=tmp%10;
         tmp/=10;
     }

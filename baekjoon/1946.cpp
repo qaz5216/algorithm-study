@@ -6,9 +6,9 @@ pair<int,int> arr[100001];
 
 bool cmp(pair<int,int> a,pair<int,int> b)
 {
-    if(a.first==b.first)
+    if(a.first==b.first) //서류등수가 같으면
     {
-        return a.second<b.second;
+        return a.second<b.second; // 면접등수순으로
     }
     return a.first<b.first;
 }
@@ -26,12 +26,12 @@ int main()
             cin>>arr[i].first>>arr[i].second;
         }
         sort(arr,arr+n,cmp);
-        int cnt=1;
-        int tmp=arr[0].second;
+        int cnt=1;//제일 등수높은사람
+        int tmp=arr[0].second;//면접등수
         for(int i=1;i<n;i++){
-            if(arr[i].second<tmp){
+            if(arr[i].second<tmp){//tmp=그전인덱스 면접등수
                 cnt++;
-                tmp=arr[i].second;
+                tmp=arr[i].second;//tmp에 갱신
             }
         }
         cout<<cnt<<'\n';

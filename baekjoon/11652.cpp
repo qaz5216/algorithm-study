@@ -5,7 +5,7 @@ using namespace std;
 int n;
 long long mx;
 int mxcnt;
-map<long long,int> m;
+map<long long,int> m; //
 int main()
 {
     mxcnt=0;
@@ -16,12 +16,12 @@ int main()
         cin>>x;
         cnt=++m[x];
         if(mxcnt<=cnt){
-            if(mxcnt==cnt){
-                if(x<mx){
+            if(mxcnt==cnt){//개수가 같으면
+                if(x<mx){//큰걸로
                     mx=x;
                 }
             }
-            else{
+            else{//개수가 더 많으면
                 mx=x;
                 mxcnt=cnt;
             }

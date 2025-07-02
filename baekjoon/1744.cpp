@@ -32,40 +32,40 @@ int main(){
     onecnt=0;
     for(int i=0;i<n;i++){
         cin>>x;
-        if(x>1){
+        if(x>1){//1이 아닌 양수면
             pv.push_back(x);
         }
-        else if(x==1){
+        else if(x==1){//1이면
             onecnt++;
         }
-        else if(x<0){
+        else if(x<0){//음수면
             mv.push_back(x);
         }
-        else{
+        else{//0이면
             zerocnt++;
         }
     }
-    sort(pv.begin(),pv.end(),greater<int>());
-    sort(mv.begin(),mv.end());
-    int pvsum=0;
-    int mvsum=0;
+    sort(pv.begin(),pv.end(),greater<int>());//양수 내림차순
+    sort(mv.begin(),mv.end());//음수 오름차순
+    int pvsum=0;//양수합
+    int mvsum=0;//음수합
     int idx=0;
     while(idx<pv.size()){
         if(idx+1<pv.size()){
-            pvsum+=pv[idx]*pv[idx+1];
+            pvsum+=pv[idx]*pv[idx+1];//묶어서 더하기
         }
         else{
-            pvsum+=pv[idx];
+            pvsum+=pv[idx];//남은 양수가 1개
         }
-        idx+=2;
+        idx+=2;//2개 묶어서 썼으니 idx+=2
     }
     idx=0;
-    while(idx<mv.size()){
-        if(idx+1<mv.size()){
+    while(idx<mv.size()){//음수
+        if(idx+1<mv.size()){//음수가 두개이상있으면 양수로 바꿔지니까
             mvsum+=mv[idx]*mv[idx+1];
         }
         else{
-            if(zerocnt==0){
+            if(zerocnt==0){ //0이 없으면
                 mvsum+=mv[idx];
             }
         }
