@@ -4,65 +4,65 @@ using namespace std;
 
 #define ll long long
 
-int N,M,K;
+int N, M, K;
 ll arr[1000005];
 ll tree[1000005];
-vector <ll> ans;
+vector<ll> ans;
 
-
-void femod(int idx,ll diff)
+void femod(int idx, ll diff)
 {
-    while(idx<=N)
+    while (idx <= N)
     {
-        tree[idx]+=diff;
-        idx+=idx&-idx;
+        tree[idx] += diff;
+        idx += idx & -idx;
     }
     return;
 }
 
 ll mypresum(int idx)
 {
-    ll sum=0;
-    while(idx>0)
+    ll sum = 0;
+    while (idx > 0)
     {
-        sum+=tree[idx];
-        idx-=idx&-idx;
+        sum += tree[idx];
+        idx -= idx & -idx;
     }
     return sum;
 }
 
-ll query(int s,int e)
+ll query(int s, int e)
 {
-    return mypresum(e)-mypresum(s);
+    return mypresum(e) - mypresum(s);
 }
 
 int main()
 {
-    cin >> N>>M>>K;
-    for(int i=1;i<=N;i++)
+    cin >> N >> M >> K;
+    for (int i = 1; i <= N; i++)
     {
         ll a;
         cin >> arr[i];
-        femod(i,arr[i]);
+        femod(i, arr[i]);
     }
-    for(int i=0;i<M+K;i++)
+    for (int i = 0; i < M + K; i++)
     {
-        ll a,b,c;
-        cin>>a>>b>>c;
-        if(a==1)
+        ll a, b, c;
+        cin >> a >> b >> c;
+        if (a == 1)
         {
-            femod(b,c-arr[b]);
-            arr[b]=c;
+            femod(b, c - arr[b]);
+            arr[b] = c;
         }
         else
         {
-            if(b>c) swap(b,c);
-            ans.push_back(query(b-1,c));
+            if (b > c)
+                swap(b, c);
+            ans.push_back(query(b - 1, c));
         }
     }
-    for(ll answer:ans)
+    for (ll answer : ans)
     {
-        cout<<answer<<"\n";
+        cout << answer << "\n";
     }
     return 0;
 }

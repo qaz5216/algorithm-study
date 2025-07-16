@@ -6,7 +6,6 @@
 
 // int record[1000001];
 
-
 // int main()
 // {
 //     int n,t,tmp,result=0;
@@ -22,12 +21,12 @@
 //             *it=t;
 //         }
 //     }
-    
+
 //     cout << arr.size()-1;
 //     return 0;
 // }
 
-//이분탐색 직접해봐
+// 이분탐색 직접해봐
 
 #include <iostream>
 
@@ -35,44 +34,44 @@ using namespace std;
 
 int N;
 int arr[1000001];
-int len=1;
+int len = 1;
 
-int binaryfind(int s,int e,int value)
+int binaryfind(int s, int e, int value)
 {
-    if(s==e)
+    if (s == e)
     {
         return s;
     }
-    int mid=(s+e)/2;
-    if(arr[mid]>=value)
+    int mid = (s + e) / 2;
+    if (arr[mid] >= value)
     {
-        return binaryfind(s,mid,value);
+        return binaryfind(s, mid, value);
     }
     else
     {
-        return binaryfind(mid+1,e,value);
+        return binaryfind(mid + 1, e, value);
     }
 }
 
 int main()
 {
-    cin>>N;
-    cin>>arr[0];
-    for(int i=1;i<N;i++)
+    cin >> N;
+    cin >> arr[0];
+    for (int i = 1; i < N; i++)
     {
         int a;
         cin >> a;
-        if(arr[len-1]<a)
+        if (arr[len - 1] < a)
         {
-            arr[len]=a;
+            arr[len] = a;
             len++;
         }
         else
         {
-            int idx=binaryfind(0,len-1,a);
-            arr[idx]=a;
+            int idx = binaryfind(0, len - 1, a);
+            arr[idx] = a;
         }
     }
-    cout<<len;
+    cout << len;
     return 0;
 }

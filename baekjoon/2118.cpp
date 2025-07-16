@@ -9,32 +9,33 @@ int sum;
 
 int main()
 {
-    cin>>n;
-    sum=0;
-    ans=0;
-    for(int i=0;i<n;i++)
+    cin >> n;
+    sum = 0;
+    ans = 0;
+    for (int i = 0; i < n; i++)
     {
-        cin>>arr[i];
-        sum+=arr[i];
+        cin >> arr[i];
+        sum += arr[i];
     }
-    int s=0,e=0,tmp=0;
-    while(s<n)
+    int s = 0, e = 0, tmp = 0;
+    while (s < n)
     {
-        while(true)
+        while (true)
         {
-            tmp+=arr[e];
-            if(tmp>sum/2)
+            tmp += arr[e];
+            if (tmp > sum / 2)
             {
-                tmp-=arr[e];
+                tmp -= arr[e];
                 break;
             }
             e++;
-            if(e>=n)e-=n;
+            if (e >= n)
+                e -= n;
         }
-        ans=max(ans,tmp);
-        tmp-=arr[s];
+        ans = max(ans, tmp);
+        tmp -= arr[s];
         s++;
     }
-    cout<<ans;
+    cout << ans;
     return 0;
 }

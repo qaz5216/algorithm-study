@@ -9,17 +9,16 @@ int arry[100001];
 
 int main()
 {
-    cin>>n;
-    for(int i=0;i<n;i++)
+    cin >> n;
+    for (int i = 0; i < n; i++)
     {
-        cin>>arrx[i]>>arry[i];
+        cin >> arrx[i] >> arry[i];
     }
-    sort(arrx,arry+n);
-    sort(arrx,arry+n);
-    long long ans=1e12;
-    for(int i=0;i<n;i++)
+    sort(arrx, arry + n);
+    sort(arrx, arry + n);
+    long long ans = 1e12;
+    for (int i = 0; i < n; i++)
     {
-        
     }
     return 0;
 }

@@ -9,12 +9,12 @@ int main()
     cout.tie(NULL);
     vector<int> h;
     vector<int> j;
-    int ans=1;
-    for(int i=0;i<3;i++)
+    int ans = 1;
+    for (int i = 0; i < 3; i++)
     {
         int x;
-        cin>>x;
-        if(x%2==0)
+        cin >> x;
+        if (x % 2 == 0)
         {
             j.push_back(x);
         }
@@ -23,20 +23,20 @@ int main()
             h.push_back(x);
         }
     }
-    if(h.size()==0)
+    if (h.size() == 0)
     {
-        for(int x:j)
+        for (int x : j)
         {
-            ans*=x;
+            ans *= x;
         }
     }
     else
     {
-        for(int x:h)
+        for (int x : h)
         {
-            ans*=x;
+            ans *= x;
         }
     }
-    cout<<ans;
+    cout << ans;
     return 0;
 }

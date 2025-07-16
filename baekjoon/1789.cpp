@@ -10,12 +10,12 @@ using namespace std;
 int main()
 {
     ll n;
-    cin>>n;
-    ll i=1;
-    while(i*(i+1)/2<=n)
+    cin >> n;
+    ll i = 1;
+    while (i * (i + 1) / 2 <= n)
     {
         i++;
     }
-    cout<<i-1;
+    cout << i - 1;
     return 0;
 }

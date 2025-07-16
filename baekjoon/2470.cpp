@@ -6,28 +6,28 @@ int N;
 int arr[100001];
 int main()
 {
-    cin>>N;
-    for(int i=0;i<N;i++)
+    cin >> N;
+    for (int i = 0; i < N; i++)
     {
-        cin>>arr[i];
+        cin >> arr[i];
     }
-    sort(arr,arr+N);
-    int s=0;
-    int e=N-1;
-    int min=abs(arr[0]+arr[N-1]);
-    int tmp=arr[s]+arr[e];
-    int anss=arr[s];
-    int anse=arr[e];
-    while(s<e)
+    sort(arr, arr + N);
+    int s = 0;
+    int e = N - 1;
+    int min = abs(arr[0] + arr[N - 1]);
+    int tmp = arr[s] + arr[e];
+    int anss = arr[s];
+    int anse = arr[e];
+    while (s < e)
     {
-        tmp=arr[s]+arr[e];
-        if(abs(tmp)<min)
+        tmp = arr[s] + arr[e];
+        if (abs(tmp) < min)
         {
-            anss=arr[s];
-            anse=arr[e];
-            min=abs(tmp);
+            anss = arr[s];
+            anse = arr[e];
+            min = abs(tmp);
         }
-        if(tmp<0)
+        if (tmp < 0)
         {
             s++;
         }
@@ -36,17 +36,9 @@ int main()
             e--;
         }
     }
-    cout<<anss<<" "<<anse;
+    cout << anss << " " << anse;
     return 0;
 }
-
-
-
-
-
-
-
-
 
 /*
 #include <iostream>
@@ -63,7 +55,7 @@ cin >> n;
 for (int i=0;i<n;i++)
 {
     cin >> t;
-    arr.push_back(t); 
+    arr.push_back(t);
 }
 sort(arr.begin(),arr.end());
 int start=0,end=n-1;

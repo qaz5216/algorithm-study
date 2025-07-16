@@ -5,20 +5,20 @@ using namespace std;
 int main()
 {
     int T;
-    int N,M;
-    cin>>T;
+    int N, M;
+    cin >> T;
     while (T--)
     {
-        long long ans=1;
-        cin>>N>>M;
-        //cout<<mCn
-        for(int i=1;i<=N;i++)
+        long long ans = 1;
+        cin >> N >> M;
+        // cout<<mCn
+        for (int i = 1; i <= N; i++)
         {
-            ans*=M;
+            ans *= M;
             M--;
-            ans/=i;
+            ans /= i;
         }
-        cout<<ans<<"\n";
+        cout << ans << "\n";
     }
     return 0;
 }

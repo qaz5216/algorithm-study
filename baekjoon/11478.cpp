@@ -3,20 +3,20 @@
 
 using namespace std;
 
-map<string,bool> m;
+map<string, bool> m;
 
 int main()
 {
     string s;
-    cin>>s;
-    for(int i=0;i<s.size();i++)
+    cin >> s;
+    for (int i = 0; i < s.size(); i++)
     {
-        for(int j=1;j+i<=s.size();j++)
+        for (int j = 1; j + i <= s.size(); j++)
         {
-            string tmp=s.substr(i,j);
-            m[tmp]=true;
+            string tmp = s.substr(i, j);
+            m[tmp] = true;
         }
     }
-    cout<<m.size();
+    cout << m.size();
     return 0;
 }

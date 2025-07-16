@@ -13,19 +13,19 @@ int main()
     {
         cin >> N;
         cin >> dp[0];
-        int result=dp[0];
-        for(int i=1;i<N;i++)
+        int result = dp[0];
+        for (int i = 1; i < N; i++)
         {
             int tmp;
             cin >> tmp;
-            dp[i]=max((dp[i-1]+tmp),tmp);
-            result=max(result,dp[i]);
+            dp[i] = max((dp[i - 1] + tmp), tmp);
+            result = max(result, dp[i]);
         }
         ans.push_back(result);
     }
-    for(int answer:ans)
+    for (int answer : ans)
     {
-        cout << answer<<"\n";
+        cout << answer << "\n";
     }
     return 0;
 }

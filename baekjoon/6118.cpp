@@ -10,29 +10,39 @@ bool visit[MN];
 
 vector<int> g[MN];
 
-int main() {
-    int N, M; cin >> N >> M;
-    while(M--) {
-        int a, b; cin >> a >> b;
+int main()
+{
+    int N, M;
+    cin >> N >> M;
+    while (M--)
+    {
+        int a, b;
+        cin >> a >> b;
         g[a].push_back(b);
         g[b].push_back(a);
     }
     vector<int> ans;
     int dist = 0;
     visit[1] = true;
-    queue<pair<int,int>> q;
+    queue<pair<int, int>> q;
     q.push({1, 0});
-    while(!q.empty()) {
-        pair<int,int> now = q.front(); q.pop();
-        for(int e : g[now.first]) {
-            if(visit[e]) continue;
+    while (!q.empty())
+    {
+        pair<int, int> now = q.front();
+        q.pop();
+        for (int e : g[now.first])
+        {
+            if (visit[e])
+                continue;
             visit[e] = true;
-            if(dist < now.second + 1) {
+            if (dist < now.second + 1)
+            {
                 dist = now.second + 1;
                 ans.clear();
                 ans.push_back(e);
             }
-            else if(dist == now.second + 1) {
+            else if (dist == now.second + 1)
+            {
                 ans.push_back(e);
             }
             q.push({e, now.second + 1});

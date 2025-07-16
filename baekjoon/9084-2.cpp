@@ -12,31 +12,32 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
     int t;
-    cin>>t;
-    while(t--)
-    {    
-        cin>>n;
-        for(int i=0;i<n;i++)
+    cin >> t;
+    while (t--)
+    {
+        cin >> n;
+        for (int i = 0; i < n; i++)
         {
-            cin>>arr[i];
+            cin >> arr[i];
         }
-        cin>>m;
-        memset(dp,0,sizeof(dp));
-        for(int i=0;i<n;i++)
+        cin >> m;
+        memset(dp, 0, sizeof(dp));
+        for (int i = 0; i < n; i++)
         {
-            for(int j=0;j<=m;j++)
+            for (int j = 0; j <= m; j++)
             {
-                if(j-arr[i]>=0)
+                if (j - arr[i] >= 0)
                 {
-                    if(j==arr[i]) dp[j]++;
+                    if (j == arr[i])
+                        dp[j]++;
                     else
                     {
-                        dp[j]+=dp[j-arr[i]];
+                        dp[j] += dp[j - arr[i]];
                     }
                 }
             }
         }
-        cout<<dp[m]<<'\n';
+        cout << dp[m] << '\n';
     }
     return 0;
 }

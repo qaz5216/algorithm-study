@@ -2,30 +2,34 @@
 
 using namespace std;
 
-int n,q,m,l,r,x;
+int n, q, m, l, r, x;
 int arr[100001];
 int seg[400001];
 int lazy[400001];
 
-int initseg(int node,int left,int right)
+int initseg(int node, int left, int right)
 {
-    if(left==right){
-        return seg[node]=arr[left];
+    if (left == right)
+    {
+        return seg[node] = arr[left];
     }
-    int mid=(left+right)/2;
-    return seg[node]=initseg(node*2,left,mid)+initseg(node*2+1,mid+1,right);
+    int mid = (left + right) / 2;
+    return seg[node] = initseg(node * 2, left, mid) + initseg(node * 2 + 1, mid + 1, right);
 }
 
-void propagation(int node,int left,int right){
-    if(lazy[node]==0){
+void propagation(int node, int left, int right)
+{
+    if (lazy[node] == 0)
+    {
         return;
     }
-    seg[node]+=lazy[node]*(right-left+1);
-    if(left!=right){
-        int mid=(left+right)/2;
-        lazy[node*2]=lazy[node];
-        lazy[node*2+1]=lazy[node];
-        lazy[node]=0;
+    seg[node] += lazy[node] * (right - left + 1);
+    if (left != right)
+    {
+        int mid = (left + right) / 2;
+        lazy[node * 2] = lazy[node];
+        lazy[node * 2 + 1] = lazy[node];
+        lazy[node] = 0;
     }
 }
 /*
@@ -33,60 +37,67 @@ void propagation(int node,int left,int right){
 
 
 */
-int query(int node,int left,int right,int target){
-    if(target<left||right<target){
+int query(int node, int left, int right, int target)
+{
+    if (target < left || right < target)
+    {
         return 0;
     }
-    propagation(node,left,right);
-    if(left==right){
+    propagation(node, left, right);
+    if (left == right)
+    {
         return seg[node];
     }
-    else{
-        int mid=(left+right)/2;
-        return query(node*2,left,mid,target)+query(node*2+1,mid+1,right,target);
+    else
+    {
+        int mid = (left + right) / 2;
+        return query(node * 2, left, mid, target) + query(node * 2 + 1, mid + 1, right, target);
     }
 }
 
-void update(int node,int left,int right,int start,int end){
-    propagation(node,left,right);
-    if(start<=left||right<=end){
-        lazy[node]+=1;
+void update(int node, int left, int right, int start, int end)
+{
+    propagation(node, left, right);
+    if (start <= left || right <= end)
+    {
+        lazy[node] += 1;
         return;
     }
-    else{
-        int mid=(left+right)/2;
-        update(node*2,left,mid,start,end);
-        update(node*2+1,mid+1,right,start,end);
+    else
+    {
+        int mid = (left + right) / 2;
+        update(node * 2, left, mid, start, end);
+        update(node * 2 + 1, mid + 1, right, start, end);
     }
 }
-
-
 
 int main()
 {
-    cin>>n;
-    for(int i=0;i<n;i++){
-        cin>>arr[i];
-    }
-    initseg(1,0,n-1);
-    cin>>q;
-    while(q--)
+    cin >> n;
+    for (int i = 0; i < n; i++)
     {
-        cin>>m;
-        if(m==1)
+        cin >> arr[i];
+    }
+    initseg(1, 0, n - 1);
+    cin >> q;
+    while (q--)
+    {
+        cin >> m;
+        if (m == 1)
         {
-            cin>>l>>r;
-            update(1,0,n-1,l-1,r-1);
+            cin >> l >> r;
+            update(1, 0, n - 1, l - 1, r - 1);
         }
-        else{
-            cin>>x;
-            cout<<query(1,0,n-1,x-1)<<'\n';
+        else
+        {
+            cin >> x;
+            cout << query(1, 0, n - 1, x - 1) << '\n';
         }
     }
     return 0;
 }
 /*
-한번 쭉입력받고 
+한번 쭉입력받고
 record[]배열 작성
 
 그다음 쿼리를 한번더 실행하면서

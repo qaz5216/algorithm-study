@@ -2,26 +2,30 @@
 
 using namespace std;
 
-void printspace(){
-    cout<<' ';
+void printspace()
+{
+    cout << ' ';
 }
-void printstar(){
-    cout<<'*';
+void printstar()
+{
+    cout << '*';
 }
 
-void sol(int x){
-    for(int i=0;i<x;i++){
-        for(int j=0;j<x*2;j++){
-            
+void sol(int x)
+{
+    for (int i = 0; i < x; i++)
+    {
+        for (int j = 0; j < x * 2; j++)
+        {
         }
     }
 }
 
-int main(){
+int main()
+{
 
     return 0;
 }
-
 
 /*
 

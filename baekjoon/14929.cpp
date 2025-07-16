@@ -9,21 +9,21 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    long long n,ans=0;
-    cin>>n;
-    for(int i=0;i<n;i++)
+    long long n, ans = 0;
+    cin >> n;
+    for (int i = 0; i < n; i++)
     {
-        cin>>arr[i];
+        cin >> arr[i];
     }
-    dp[0]=arr[0];
-    for(int i=1;i<n;i++)
+    dp[0] = arr[0];
+    for (int i = 1; i < n; i++)
     {
-        dp[i]=dp[i-1]+arr[i];
+        dp[i] = dp[i - 1] + arr[i];
     }
-    for(int i=1;i<n;i++)
+    for (int i = 1; i < n; i++)
     {
-        ans+=dp[i-1]*arr[i];
+        ans += dp[i - 1] * arr[i];
     }
-    cout<<ans;
+    cout << ans;
     return 0;
 }

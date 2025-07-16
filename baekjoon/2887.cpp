@@ -4,15 +4,14 @@
 #include <algorithm>
 using namespace std;
 int parent[100001];
-int N,res;
-vector<pair<int,int>> v[3]; // 좌표,i번째 행성
+int N, res;
+vector<pair<int, int>> v[3];			  // 좌표,i번째 행성
 vector<pair<int, pair<int, int>>> planet; // dis,A번째 행성,B번째 행성
 int Find(int x)
 {
 	if (parent[x] == x)
 		return x;
 	return parent[x] = Find(parent[x]);
-
 }
 
 bool SameParent(int a, int b)
@@ -53,7 +52,7 @@ int main(void)
 
 	for (int i = 0; i < N - 1; i++)
 	{
-		planet.push_back(make_pair(abs(v[0][i].first - v[0][i + 1].first), make_pair(v[0][i].second, v[0][i+1].second)));
+		planet.push_back(make_pair(abs(v[0][i].first - v[0][i + 1].first), make_pair(v[0][i].second, v[0][i + 1].second)));
 		planet.push_back(make_pair(abs(v[1][i].first - v[1][i + 1].first), make_pair(v[1][i].second, v[1][i + 1].second)));
 		planet.push_back(make_pair(abs(v[2][i].first - v[2][i + 1].first), make_pair(v[2][i].second, v[2][i + 1].second)));
 	}
@@ -66,8 +65,6 @@ int main(void)
 			res += planet[i].first;
 			Union(planet[i].second.first, planet[i].second.second);
 		}
-
 	}
 	cout << res;
-
 }

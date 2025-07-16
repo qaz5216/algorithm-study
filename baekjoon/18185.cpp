@@ -7,46 +7,46 @@ int arr[10003];
 
 int main()
 {
-    int ans=0;
-    cin>>n;
-    for(int i=0;i<n;i++)
+    int ans = 0;
+    cin >> n;
+    for (int i = 0; i < n; i++)
     {
-        cin>>arr[i];
+        cin >> arr[i];
     }
-    for(int i=0;i<n;i++)
+    for (int i = 0; i < n; i++)
     {
-        if(arr[i+1]>arr[i+2])
+        if (arr[i + 1] > arr[i + 2])
         {
-            int cnt = min(arr[i], arr[i+1] - arr[i+2]);
-            ans+=5*cnt;
+            int cnt = min(arr[i], arr[i + 1] - arr[i + 2]);
+            ans += 5 * cnt;
 
-            arr[i]-=cnt;
-            arr[i+1]-=cnt;
-            
-            int cnt2 = min(arr[i], min(arr[i+1], arr[i+2]));
-            ans+=7*cnt2;
+            arr[i] -= cnt;
+            arr[i + 1] -= cnt;
 
-            arr[i]-=cnt2;
-            arr[i+1]-=cnt2;
-            arr[i+2]-=cnt2;
+            int cnt2 = min(arr[i], min(arr[i + 1], arr[i + 2]));
+            ans += 7 * cnt2;
+
+            arr[i] -= cnt2;
+            arr[i + 1] -= cnt2;
+            arr[i + 2] -= cnt2;
         }
         else
         {
-            int cnt = min(arr[i],min(arr[i+1], arr[i+2]));
-            ans+=7*cnt;
+            int cnt = min(arr[i], min(arr[i + 1], arr[i + 2]));
+            ans += 7 * cnt;
 
-            arr[i]-=cnt;
-            arr[i+1]-=cnt;
-            arr[i+2]-=cnt;
-            
-            int cnt2 = min(arr[i],arr[i+1]);
-            ans+=5*cnt2;
-            
-            arr[i]-=cnt2;
-            arr[i+1]-=cnt2;
+            arr[i] -= cnt;
+            arr[i + 1] -= cnt;
+            arr[i + 2] -= cnt;
+
+            int cnt2 = min(arr[i], arr[i + 1]);
+            ans += 5 * cnt2;
+
+            arr[i] -= cnt2;
+            arr[i + 1] -= cnt2;
         }
-        ans+=3*arr[i];
+        ans += 3 * arr[i];
     }
-    cout<<ans;
+    cout << ans;
     return 0;
 }

@@ -5,36 +5,38 @@
 using namespace std;
 
 int n;
-int ans=0;
+int ans = 0;
 
 int main()
 {
-    cin>>n;
-    priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> sq;
-    priority_queue<int,vector<int>,greater<int>> eq; 
-    for(int i=0;i<n;i++)
+    cin >> n;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> sq;
+    priority_queue<int, vector<int>, greater<int>> eq;
+    for (int i = 0; i < n; i++)
     {
-        int a,b,c;
-        cin>>a>>b>>c;
-        sq.push({b,c});
+        int a, b, c;
+        cin >> a >> b >> c;
+        sq.push({b, c});
     }
-    while(!sq.empty())
+    while (!sq.empty())
     {
-        int s=sq.top().first;
-        int e=sq.top().second;
+        int s = sq.top().first;
+        int e = sq.top().second;
         sq.pop();
-        while(true)
+        while (true)
         {
-            if(eq.empty()||eq.top()>s){
+            if (eq.empty() || eq.top() > s)
+            {
                 break;
             }
-            else{
+            else
+            {
                 eq.pop();
             }
         }
         eq.push(e);
-        ans=max(ans,(int)eq.size());
+        ans = max(ans, (int)eq.size());
     }
-    cout<<ans;
+    cout << ans;
     return 0;
 }

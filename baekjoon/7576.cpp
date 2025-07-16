@@ -11,40 +11,53 @@ int dy[4] = {0, 1, -1, 0};
 int board[MN][MN];
 bool visit[MN][MN];
 
-struct edge {
+struct edge
+{
     int x, y, depth;
 };
 
-int main() {
-    int M, N; cin >> M >> N;
+int main()
+{
+    int M, N;
+    cin >> M >> N;
     queue<edge> q;
     int cnt = 0;
-    for(int i = 1; i <= N; i++) {
-        for(int j = 1; j <= M; j++) {
+    for (int i = 1; i <= N; i++)
+    {
+        for (int j = 1; j <= M; j++)
+        {
             cin >> board[i][j];
-            if(board[i][j] == 1) {
+            if (board[i][j] == 1)
+            {
                 q.push({i, j, 0});
                 visit[i][j] = true;
             }
-            else if(board[i][j] == 0)
+            else if (board[i][j] == 0)
                 cnt++;
         }
     }
-    if(cnt == 0) {
+    if (cnt == 0)
+    {
         cout << 0;
         return 0;
     }
     int ans = 0;
-    while(!q.empty()) {
-        edge now = q.front(); q.pop();
-        for(int d = 0; d < 4; d++) {
+    while (!q.empty())
+    {
+        edge now = q.front();
+        q.pop();
+        for (int d = 0; d < 4; d++)
+        {
             int nx = now.x + dx[d];
             int ny = now.y + dy[d];
-            if(nx >= 1 && nx <= N && ny >= 1 && ny <= M) {
-                if(visit[nx][ny] || board[nx][ny] == -1) continue;
+            if (nx >= 1 && nx <= N && ny >= 1 && ny <= M)
+            {
+                if (visit[nx][ny] || board[nx][ny] == -1)
+                    continue;
                 visit[nx][ny] = true;
                 ans++;
-                if(ans == cnt) {
+                if (ans == cnt)
+                {
                     cout << now.depth + 1;
                     return 0;
                 }

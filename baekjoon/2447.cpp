@@ -5,32 +5,31 @@ using namespace std;
 
 int N;
 
-
-
-void print(int i,int j,int num)
+void print(int i, int j, int num)
 {
-    if((i/num)%3==1&&(j/num)%3==1)
-        cout<<" ";
-    else{
-        if(num/3==0)
+    if ((i / num) % 3 == 1 && (j / num) % 3 == 1)
+        cout << " ";
+    else
+    {
+        if (num / 3 == 0)
         {
-            cout<<"*";
+            cout << "*";
         }
         else
-            print(i,j,num/3);
+            print(i, j, num / 3);
     }
 };
 
 int main()
 {
     cin >> N;
-    for(int i=0;i<N;i++)
+    for (int i = 0; i < N; i++)
     {
-        for(int j=0;j<N;j++)
+        for (int j = 0; j < N; j++)
         {
-            print(i,j,N);       
+            print(i, j, N);
         }
-        cout<<"\n";
-    } 
+        cout << "\n";
+    }
     return 0;
 }

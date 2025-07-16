@@ -3,18 +3,18 @@
 
 using namespace std;
 
-stack <int> st;
+stack<int> st;
 
 int N;
 
 int main()
 {
-    cin>>N;
-    while(N--)
+    cin >> N;
+    while (N--)
     {
         string s;
-        cin>>s;
-        if(s=="push")
+        cin >> s;
+        if (s == "push")
         {
             int x;
             cin >> x;
@@ -22,34 +22,37 @@ int main()
         }
         else
         {
-            if(s=="pop"){
-                if(!st.empty()){
-                int x=st.top();
-                cout<<x<<"\n";
-                st.pop();
+            if (s == "pop")
+            {
+                if (!st.empty())
+                {
+                    int x = st.top();
+                    cout << x << "\n";
+                    st.pop();
                 }
                 else
                 {
-                    cout<<-1<<"\n";
+                    cout << -1 << "\n";
                 }
             }
-            if(s=="size")
+            if (s == "size")
             {
-                cout<<st.size()<<"\n";
+                cout << st.size() << "\n";
             }
-            if(s=="empty")
+            if (s == "empty")
             {
-                cout<<st.empty()<<"\n";
+                cout << st.empty() << "\n";
             }
-            if(s=="top")
+            if (s == "top")
             {
-                if(!st.empty()){
-                int x=st.top();
-                cout<<x<<"\n";
+                if (!st.empty())
+                {
+                    int x = st.top();
+                    cout << x << "\n";
                 }
                 else
                 {
-                    cout<<-1<<"\n";
+                    cout << -1 << "\n";
                 }
             }
         }

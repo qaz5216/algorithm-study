@@ -1,12 +1,12 @@
-#include<iostream> 
+#include <iostream>
 
 using namespace std;
 
 int main()
 {
-    int x=12;
-    cout<< x<<"\n";
-    x=x &(-x);
+    int x = 12;
+    cout << x << "\n";
+    x = x & (-x);
     cout << x;
     return 0;
 }

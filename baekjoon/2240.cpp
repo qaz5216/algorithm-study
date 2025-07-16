@@ -17,7 +17,7 @@ int main()
     for (int i = 0; i < t; i++)
     {
         cin >> x;
-        if (namu ==(bool)(x - 1))
+        if (namu == (bool)(x - 1))
         {
             cnt++;
         }
@@ -30,28 +30,29 @@ int main()
     }
     arr.push_back({namu, cnt});
     for (int idx = 1; idx < arr.size(); idx++)
-    {   //처음은 1번나무 밑에있으니까
+    { // 처음은 1번나무 밑에있으니까
         bool cur = arr[idx].first;
         int size = arr[idx].second;
-        if(cur==0)
-            dp[0][0][idx]=dp[0][0][idx-1]+size;
+        if (cur == 0)
+            dp[0][0][idx] = dp[0][0][idx - 1] + size;
         else
-            dp[0][0][idx]=dp[0][0][idx-1];
-            // cout<<"dp["<<0<<"]["<<0<<"]["<<idx<<"]="<<dp[0][0][idx]<<'\n';
+            dp[0][0][idx] = dp[0][0][idx - 1];
+        // cout<<"dp["<<0<<"]["<<0<<"]["<<idx<<"]="<<dp[0][0][idx]<<'\n';
     }
+
     for (int k = 1; k <= w; k++)
     {
         for (int idx = 1; idx < arr.size(); idx++)
         {
             bool cur = arr[idx].first;
             int size = arr[idx].second;
-            dp[cur][k][idx]=max(dp[!cur][k-1][idx-1],dp[cur][k][idx-1])+size;
-            dp[!cur][k][idx]=max(dp[cur][k-1][idx-1],dp[!cur][k][idx-1]);
+            dp[cur][k][idx] = max(dp[!cur][k - 1][idx - 1], dp[cur][k][idx - 1]) + size;
+            dp[!cur][k][idx] = max(dp[cur][k - 1][idx - 1], dp[!cur][k][idx - 1]); // 일단 정보는 넣어줘야되니까..
             // cout<<"dp["<<cur<<"]["<<k<<"]["<<idx<<"]="<<dp[cur][k][idx]<<'\n';
             // cout<<"dp["<<!cur<<"]["<<k<<"]["<<idx<<"]="<<dp[!cur][k][idx]<<'\n';
         }
     }
-    cout<<max(dp[0][w][arr.size()-1],dp[1][w][arr.size()-1]);
+    cout << max(dp[0][w][arr.size() - 1], dp[1][w][arr.size() - 1]);
     return 0;
 }
 

@@ -6,29 +6,35 @@ int K;
 int ans;
 vector<int> arr;
 
-void solve(int cnt){
-    if(K/arr[cnt]>0){
-        ans+=(K/arr[cnt]);
-        K=K%arr[cnt];
+void solve(int cnt)
+{
+    if (K / arr[cnt] > 0)
+    {
+        ans += (K / arr[cnt]);
+        K = K % arr[cnt];
     }
-    if(cnt==0){
+    if (cnt == 0)
+    {
         return;
     }
-    else{
-        solve(cnt-1);
+    else
+    {
+        solve(cnt - 1);
     }
     return;
 }
 
-int main(){
+int main()
+{
     cin >> N >> K;
-    for(int i=0;i<N;i++){
+    for (int i = 0; i < N; i++)
+    {
         int tmp;
         cin >> tmp;
         arr.push_back(tmp);
     }
-    ans=0;
-    solve(N-1);
+    ans = 0;
+    solve(N - 1);
     cout << ans;
     return 0;
 }

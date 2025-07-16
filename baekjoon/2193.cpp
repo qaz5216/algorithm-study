@@ -4,16 +4,19 @@
 
 using namespace std;
 
-long long record[92] = {0,};
+long long record[92] = {
+    0,
+};
 
 int main()
 {
     int n;
     cin >> n;
-    record[1]=1;
-    record[2]=1;
-    for(int i=3;i<n+1;i++){
-        record[i]=record[i-1]+record[i-2];        
+    record[1] = 1;
+    record[2] = 1;
+    for (int i = 3; i < n + 1; i++)
+    {
+        record[i] = record[i - 1] + record[i - 2];
     }
     cout << record[n];
     return 0;

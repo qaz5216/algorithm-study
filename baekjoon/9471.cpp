@@ -7,24 +7,25 @@ ll INF = 1e6;
 
 int fisano_period(int m)
 {
-    int count =0,ex=0,now=1;
-    do{
-        int tmp=now+ex;
-        ex=now;
-        now=tmp%m;
+    int count = 0, ex = 0, now = 1;
+    do
+    {
+        int tmp = now + ex;
+        ex = now;
+        now = tmp % m;
         count++;
-    }while(ex!=0||now!=1);
+    } while (ex != 0 || now != 1);
     return count;
 }
 
 int main()
 {
-    ll t,n,m;
+    ll t, n, m;
     cin >> t;
     while (t--)
     {
-        cin >> n >>m;
-        cout << n << " "<< fisano_period(m)<<"\n";
+        cin >> n >> m;
+        cout << n << " " << fisano_period(m) << "\n";
     }
     return 0;
 }

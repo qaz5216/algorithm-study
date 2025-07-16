@@ -3,7 +3,7 @@
 
 using namespace std;
 
-map <string,int> m;
+map<string, int> m;
 
 int n;
 
@@ -11,26 +11,26 @@ int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    cin>>n;
+    cin >> n;
     string s;
-    for(int i=0;i<n;i++)
+    for (int i = 0; i < n; i++)
     {
-        cin>>s;
+        cin >> s;
         m[s]++;
     }
-    int num=0;
-    for(auto v:m)
+    int num = 0;
+    for (auto v : m)
     {
-        if(v.second>num)
+        if (v.second > num)
         {
-            s=v.first;
-            num=v.second;
+            s = v.first;
+            num = v.second;
         }
-        else if(v.second==num&&v.first<s)
+        else if (v.second == num && v.first < s)
         {
-            s=v.first;
+            s = v.first;
         }
     }
-    cout<<s;
+    cout << s;
     return 0;
 }

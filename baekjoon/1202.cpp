@@ -4,7 +4,7 @@
 
 using namespace std;
 
-pair<int,int> arr[300001];
+pair<int, int> arr[300001];
 bool check[300001];
 int bag[300001];
 
@@ -14,35 +14,35 @@ int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    int n,k;
-    cin>> n >> k;
-    for(int i=0;i<n;i++)
+    int n, k;
+    cin >> n >> k;
+    for (int i = 0; i < n; i++)
     {
-        int f,s;
-        cin>>arr[i].first>>arr[i].second;
+        int f, s;
+        cin >> arr[i].first >> arr[i].second;
     }
-    for(int i=0;i<k;i++)
+    for (int i = 0; i < k; i++)
     {
-        cin>>bag[i];
+        cin >> bag[i];
     }
-    sort(arr,arr+n);
-    sort(bag,bag+k);
-    long long sum=0;
-    int idx=0;
-    for(int i=0;i<k;i++)
+    sort(arr, arr + n);
+    sort(bag, bag + k);
+    long long sum = 0;
+    int idx = 0;
+    for (int i = 0; i < k; i++)
     {
-        while(idx<n&&bag[i]>=arr[idx].first)
+        while (idx < n && bag[i] >= arr[idx].first)
         {
             pq.push(arr[idx].second);
             idx++;
         }
-        if(!pq.empty())
+        if (!pq.empty())
         {
-            sum+=pq.top();
+            sum += pq.top();
             pq.pop();
         }
     }
-    cout<<sum;
+    cout << sum;
     return 0;
 }
 
