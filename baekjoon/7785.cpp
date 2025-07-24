@@ -17,19 +17,20 @@ int main()
     for (int i = 0; i < n; i++)
     {
         cin >> name >> op;
-        if (op == "enter")
+        if (op == "enter") //출근
         {
             m[name] = true;
         }
-        else
+        else                //퇴근
         {
             m.erase(name);
         }
     }
     for (auto it : m)
     {
-        ans.push_back(it.first);
+        ans.push_back(it.first);//map에 있는 이름 넣기
     }
+    //정렬
     sort(ans.begin(), ans.end(), greater<string>());
     for (string s : ans)
     {

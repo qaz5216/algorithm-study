@@ -9,7 +9,7 @@ int l, r;
 vector<int> leftarr;
 vector<int> rightarr;
 
-void lcomb(int cur, int idx)
+void lcomb(int cur, int idx) //왼쪽 조합
 {
     if (idx == l)
     {
@@ -20,7 +20,7 @@ void lcomb(int cur, int idx)
     if (cur + arr[idx] <= c)
         lcomb(cur + arr[idx], idx + 1); // 넣기
 }
-void rcomb(int cur, int idx)
+void rcomb(int cur, int idx) //오른쪽 조합
 {
     if (idx == r)
     {
@@ -43,9 +43,9 @@ int main()
     }
     if (n == 1)
     {
-        ans += 1;
+        ans += 1;   //안 넣는경우
         if (arr[0] <= c)
-        { // 같은경우도 넣을수있음.. 99퍼 반례..
+        { // (c만큼) 같은경우도 넣을수있음.. 99퍼 반례..
             ans += 1;
         }
     }
@@ -63,7 +63,7 @@ int main()
             r = rightarr.size();
 
             while (l < r)
-            { // upperbound구하기
+            { // upperbound구하기 그거보다 작은건 다 되는거니까
                 mid = (l + r) / 2;
                 if (rightarr[mid] > c - left)
                 {

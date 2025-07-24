@@ -9,7 +9,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
-    cin >> T;
+    cin >> T;//testcase
     while (T--)
     {
         priority_queue<int> pq;
@@ -18,15 +18,15 @@ int main()
             vector<int>,
             greater<int>>
             pq2;
-        unordered_map<int, int> m;
+        unordered_map<int, int> m; //
         int k, num = 0, dnum = 0;
-        cin >> k;
+        cin >> k;//쿼리수
         while (k--)
         {
             char c;
             int a;
             cin >> c;
-            if (c == 'I')
+            if (c == 'I')//넣기
             {
                 cin >> a;
                 pq.push(a);
@@ -35,23 +35,23 @@ int main()
                 num++;
             }
             else
-            {
+            {//빼기
                 cin >> a;
-                if (num - dnum == 0)
+                if (num - dnum == 0)//큐가 비어있으면
                     continue;
-                dnum++;
-                if (a == 1)
+                dnum++;//뺀개수++
+                if (a == 1)//최대값 큐에서 빼기
                 {
-                    while (m[pq.top()] == 0)
+                    while (m[pq.top()] == 0)//이미 다른큐에서 빠진게 아닐때까지
                     {
                         pq.pop();
                     }
                     m[pq.top()]--;
                     pq.pop();
                 }
-                else
+                else//최소값 큐에서 뺴기
                 {
-                    while (m[pq2.top()] == 0)
+                    while (m[pq2.top()] == 0)//이미 다른큐에서 빠진게 아닐때까지
                     {
                         pq2.pop();
                     }
@@ -61,7 +61,7 @@ int main()
             }
         }
 
-        while (!pq.empty() && m[pq.top()] == 0)
+        while (!pq.empty() && m[pq.top()] == 0)//pq.top() 찍어야되니까 이미 빠진거 다빼기
         {
             pq.pop();
         }
@@ -69,7 +69,7 @@ int main()
         {
             pq2.pop();
         }
-        if (num - dnum == 0)
+        if (num - dnum == 0)//개수 빼기 뺀거 개수 =0 이면 empty 
             cout << "EMPTY\n";
         else
             cout << pq.top() << ' ' << pq2.top() << '\n';

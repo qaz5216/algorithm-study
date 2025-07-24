@@ -23,7 +23,7 @@ int main()
             tmp = arr[i] + arr[j];
             l = j + 1;
             r = n; // n-1이 아니라 n으로 해야댐;;
-            while (l < r)
+            while (l < r)//lowerbound
             {
                 mid = (l + r) / 2;
                 if (tmp + arr[mid] < 0)
@@ -37,12 +37,12 @@ int main()
             }
             if (l == n)
                 continue;
-            if (tmp + arr[l] == 0)
+            if (tmp + arr[l] == 0)//합이 0이되면
             {
                 low = l;
                 tmp = arr[l];
                 r = n;
-                while (l < r)
+                while (l < r)//upperbound
                 {
                     mid = (l + r) / 2;
                     if (arr[mid] <= tmp)

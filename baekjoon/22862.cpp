@@ -12,11 +12,11 @@ int main()
     cin.tie(NULL);
     cin >> n >> k;
     cnt = 0;
-    int left = 0;
+    int left = 0;//수열 시작 idx
     for (int i = 0; i < n; i++)
     {
         cin >> arr[i];
-        if (arr[i] % 2)
+        if (arr[i] % 2)//홀수면
         {
             cnt++;
             if (k == 0) // q.pop안되니까 따로처리
@@ -26,7 +26,7 @@ int main()
             }
             else
             {
-                if (cnt > k)
+                if (cnt > k)//q에서 빼기
                 {
                     // ans갱신 i-l-(cnt-1)?
                     ans = max(ans, i - left - cnt + 1);
@@ -35,7 +35,7 @@ int main()
                     q.pop();
                     cnt--;
                 }
-                q.push(i);
+                q.push(i);//홀수 idx 저장용
             }
         }
     }

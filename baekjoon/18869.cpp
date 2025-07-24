@@ -139,11 +139,11 @@ int main()
             arr[i][x.second] = num;
         }
         numsize[i] = num;
-        cnt[arr[i]]++;
+        cnt[arr[i]]++;//같은 조합의 수
     }
     for (auto it : cnt)
     {
-        ans += ((it.second) * (it.second - 1)) / 2;
+        ans += ((it.second) * (it.second - 1)) / 2; //N C 2
     }
     cout << ans;
     return 0;
