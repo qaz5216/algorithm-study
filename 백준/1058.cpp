@@ -68,13 +68,13 @@ int main()
 
 // int cntFriend(int num, int depth) {
 // 	if (depth == 2)
-// 		return 0;//ģ���� ģ�������� ����
+// 		return 0;
 // 	int result = 0;
 // 	for (int i = 0; i < N; i++) {
-// 		if (arr[num][i] == 'Y' && check[i] == 0) {//ģ���̰� �湮�� ���� �ʾҴٸ� ���
-// 			check[i] = 1;//üũ
-// 			result++;//ģ�� �� ����
-// 			result += cntFriend(i, depth + 1);//���
+// 		if (arr[num][i] == 'Y' && check[i] == 0) {
+// 			check[i] = 1;
+// 			result++;
+// 			result += cntFriend(i, depth + 1);
 // 		}
 // 	}
 // 	return result;
@@ -94,9 +94,9 @@ int main()
 
 // 	for (int i = 0; i < N; i++) {
 //         //cout<<i;
-// 		initCheck();//��Ϳ� ���� ���� check �迭 �ʱ�ȭ
-// 		//check[i] = 1;//�ڱ� �ڽ��� ����
-// 		int temp = cntFriend(i, 0);//����Ͽ� ģ�� �� ����
+// 		initCheck();
+// 		//check[i] = 1;
+// 		int temp = cntFriend(i, 0);
 // 		if (max < temp){
 //             //cout<<temp<<"!"<<'\n';
 // 			max = temp;
